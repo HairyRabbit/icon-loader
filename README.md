@@ -83,13 +83,13 @@ need set `process.env.NODE_ENV` to `production`
 ### interfaces
 
 ```js
-interface Icon = {
+interface Icon {
   name: string,
   size: string,
   color: string
 }
 
-interface IconWebpackPlugin = {
+interface IconWebpackPlugin {
   path: string,      // output dir path, inherit webpackOptions.output.path
   context: string,   // which dir can we find svg files, inherit webpackOptions.context
   filename: string   // default to icon.svg
