@@ -5,10 +5,14 @@ import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
 import pkg from './package.json'
 
-export default {
-  input: path.resolve('src/index.js'),
+export default [
+  ['src/loader.js', 'lib/loader.js'],
+  ['src/component.js', 'lib/component.js'],
+  ['src/plugin.js', 'lib/plugin.js']
+].map(([input, output ]) => ({
+  input: path.resolve(input),
   output: {
-    file: path.resolve('lib/index.js'),
+    file: path.resolve(output),
     format: 'cjs',
     exports: 'named'
   },
@@ -16,13 +20,11 @@ export default {
     resolve({
       preferBuiltins: true
     }),
-    babel({ exclude: 'node_modules/**' }),
     json({ exclude: 'node_modules/**' }),
+    babel({ exclude: 'node_modules/**' }),
     commonjs()
   ),
   external: [].concat(
-    'fs',
-    'path',
     Object.keys(Object.assign(
       {},
       pkg.dependencies,
@@ -30,4 +32,4 @@ export default {
       pkg.peerDependencies
     ))
   )
-}
+}))

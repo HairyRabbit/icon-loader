@@ -64,3 +64,5 @@ lib
 dist
 .dll
 specs/**/yarn.lock
+specs/**/dist
+specs/**/node_modules

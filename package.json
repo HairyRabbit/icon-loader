@@ -1,10 +1,25 @@
 {
-  "name": "icon-loader",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "@rabbitcc/icon-loader",
+  "version": "0.0.1",
+  "main": "lib/index.js",
   "repository": "git@github.com:HairyRabbit/icon-loader.git",
-  "author": "yuffiy <yfhj1990@hotmail.com>",
-  "license": "MIT",
+  "author": "HairyRabbit <yfhj1990@hotmail.com>",
+  "license": "GPL-3.0",
+  "scripts": {
+    "start": "yarn build && yarn test:spec",
+    "test": "jest",
+    "test:type": "flow",
+    "pretest:spec": "yarn build",
+    "test:spec": "cross-env DEBUG=true sh specs/test.sh",
+    "checkall": "yarn test && yarn typed",
+    "build": "cross-env NODE_ENV=development rollup -c",
+    "build:prod": "cross-env NODE_ENV=production rollup -c",
+    "build:type": "flow gen-flow-files src/index.js > lib/index.js.flow",
+    "prepublish": "yarn build:prod && yarn build:type"
+  },
+  "files": [
+    "lib"
+  ],
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.38",
     "@babel/plugin-proposal-class-properties": "^7.0.0-beta.38",
@@ -14,16 +29,29 @@
     "@babel/plugin-syntax-dynamic-import": "^7.0.0-beta.38",
     "@babel/preset-env": "^7.0.0-beta.38",
     "@babel/preset-flow": "^7.0.0-beta.38",
+    "@babel/preset-react": "^7.0.0-beta.39",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^22.1.0",
     "flow-bin": "^0.64.0",
     "jest": "^22.1.4",
+    "react": "^16.2.0",
     "rollup": "^0.55.1",
     "rollup-plugin-babel": "^4.0.0-beta.1",
     "rollup-plugin-commonjs": "^8.3.0",
     "rollup-plugin-json": "^2.3.0",
     "rollup-plugin-node-resolve": "^3.0.2",
-    "rollup-plugin-uglify": "^3.0.0",
     "webpack": "^3.10.0"
+  },
+  "peerDependencies": {
+    "react": "^16",
+    "webpack": "^2 | ^3"
+  },
+  "dependencies": {
+    "@rabbitcc/promise-extra": "^0.0.8",
+    "glob": "^7.1.2",
+    "loader-utils": "^1.1.0",
+    "react-svg-core": "^2.1.0",
+    "svgo": "^1.0.4",
+    "svgstore": "^2.0.3"
   }
 }
