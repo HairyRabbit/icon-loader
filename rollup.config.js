@@ -6,7 +6,8 @@ import commonjs from 'rollup-plugin-commonjs'
 import pkg from './package.json'
 
 export default [
-  ['src/loader.js', 'lib/index.js'],
+  ['src/index.js', 'lib/index.js'],
+  ['src/loader.js', 'lib/loader.js'],
   ['src/component.js', 'lib/component.js'],
   ['src/plugin.js', 'lib/plugin.js']
 ].map(([input, output ]) => ({
