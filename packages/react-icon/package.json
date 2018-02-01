@@ -1,0 +1,18 @@
+{
+  "name": "@rabbitcc/react-icon",
+  "version": "0.0.6",
+  "main": "lib/index.js",
+  "repository": "git@github.com:HairyRabbit/icon-loader.git",
+  "author": "HairyRabbit <yfhj1990@hotmail.com>",
+  "license": "GPL-3.0",
+  "files": [
+    "index.js"
+  ],
+  "peerDependencies": {
+    "react": "^16",
+    "webpack": "^2 || ^3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
