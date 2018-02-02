@@ -2,15 +2,15 @@
 
 cd specs
 
-cd loader
-yarn
-yarn webpack
-cd ..
+# cd loader
+# yarn
+# yarn webpack
+# cd ..
 
-cd icon
-yarn
-yarn webpack
-cd ..
+# cd icon
+# yarn
+# yarn webpack
+# cd ..
 
 cd plugin
 yarn

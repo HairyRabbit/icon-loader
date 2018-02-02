@@ -1,7 +1,8 @@
 const path = require('path')
 const webpack = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const IconWebpackPlugin = require('../../lib/plugin').default
+const IconWebpackPlugin = require('../../packages/icon-webpack-plugin').default
+
+process.env.NODE_ENV === 'production'
 
 module.exports = {
   entry: path.resolve(__dirname, 'index.js'),
@@ -11,15 +12,20 @@ module.exports = {
   },
   module: {
     rules: [{
+      test: /\.js$/,
+      use: 'babel-loader'
+    },{
       test: /\.svg$/,
-      use: require.resolve('../../lib/loader')
+      use: require.resolve('../../packages/icon-loader')
     }]
   },
   plugins: [
     new IconWebpackPlugin({
       context: path.resolve(__dirname, 'icons')
     }),
-    new webpack.EnvironmentPlugin(['NODE_ENV']),
-    new HtmlWebpackPlugin()
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production')
+    }),
+    new webpack.optimize.ModuleConcatenationPlugin()
   ]
 }

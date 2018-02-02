@@ -6,10 +6,9 @@ import commonjs from 'rollup-plugin-commonjs'
 import pkg from './package.json'
 
 export default [
-  ['src/index.js', 'lib/index.js'],
-  ['src/loader.js', 'lib/loader.js'],
-  ['src/component.js', 'lib/component.js'],
-  ['src/plugin.js', 'lib/plugin.js']
+  ['packages/icon-loader/src/index.js', 'packages/icon-loader/index.js'],
+  ['packages/react-icon/src/index.js', 'packages/react-icon/index.js'],
+  ['packages/icon-webpack-plugin/src/index.js', 'packages/icon-webpack-plugin/index.js']
 ].map(([input, output ]) => ({
   input: path.resolve(input),
   output: {
@@ -28,6 +27,7 @@ export default [
   external: [].concat(
     'fs',
     'path',
+    '@babel/core',
     Object.keys(Object.assign(
       {},
       pkg.dependencies,

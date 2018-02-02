@@ -6,6 +6,6 @@
  * @flow
  */
 
-export { default as default } from './loader'
-export { default as IconWebpackPlugin } from './plugin'
-export { default as Icon } from './component'
+module.exports.default = require('./loader').default
+module.exports.IconWebpackPlugin = require('./plugin').default
+module.exports.Icon = require('./component').default
