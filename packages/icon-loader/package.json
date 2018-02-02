@@ -1,6 +1,6 @@
 {
   "name": "@rabbitcc/icon-loader",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "main": "index.js",
   "repository": "git@github.com:HairyRabbit/icon-loader.git",
   "author": "HairyRabbit <yfhj1990@hotmail.com>",
