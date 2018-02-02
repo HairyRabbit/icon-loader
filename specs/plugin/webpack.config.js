@@ -2,8 +2,6 @@ const path = require('path')
 const webpack = require('webpack')
 const IconWebpackPlugin = require('../../packages/icon-webpack-plugin').default
 
-process.env.NODE_ENV === 'production'
-
 module.exports = {
   entry: path.resolve(__dirname, 'index.js'),
   output: {

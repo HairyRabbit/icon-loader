@@ -85,8 +85,6 @@ function Icon(props) {
   } : {});
 
   if (process.env.NODE_ENV === 'production') {
-    require(`${ICONCONTEXT}/${name}.svg`);
-
     return React.createElement("svg", _extends({
       role: "img",
       viewBox: "0 0 1024 1024",

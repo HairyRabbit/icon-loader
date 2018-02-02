@@ -37,7 +37,6 @@ export default function Icon(props: Props): React.Node {
   }
 
   if(process.env.NODE_ENV === 'production') {
-    require(`${ICONCONTEXT}/${name}.svg`)
     return (
       <svg
         role="img"
