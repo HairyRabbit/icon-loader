@@ -25,14 +25,14 @@ This lib contain three libs, a loader, a plugin and a component.
 import * as React from 'react'
 import Svg from './demo.svg'
 
-React.render(<svg />) //=> Render a react component
+React.render(<Svg />) //=> Render a react component
 ```
 
 ### plugin && component
 
 ```js
 // webpack.config.js
-import IconWebpackPlugin from '@rabbitcc/icon-loader/plugin'
+import IconWebpackPlugin from '@rabbitcc/icon-webpack-plugin'
 
 {
   module: {
@@ -48,7 +48,7 @@ import IconWebpackPlugin from '@rabbitcc/icon-loader/plugin'
 
 // emample.js
 import * as React from 'react'
-import Icon from '@rabbitcc/icon-loader/component'
+import Icon from '@rabbitcc/react-icon'
 
 React.render(<Icon name="demo" />) //=> Render demo.svg
 ```
@@ -57,7 +57,7 @@ In production mode, this plugin will generate a svg sprites for you:
 
 ```js
 // webpack.config.js
-import IconWebpackPlugin from '@rabbitcc/icon-loader/plugin'
+import IconWebpackPlugin from '@rabbitcc/icon-webpack-plugin'
 
 {
   module: {
@@ -73,7 +73,7 @@ import IconWebpackPlugin from '@rabbitcc/icon-loader/plugin'
 
 // emample.js
 import * as React from 'react'
-import Icon from '@rabbitcc/icon-loader/component'
+import Icon from '@rabbitcc/react-icon'
 
 React.render(<Icon name="demo" />) //=> Render demo as <use xref:link="icon.svg#demo" >
 ```
@@ -95,3 +95,7 @@ interface IconWebpackPlugin {
   filename: string   // default to icon.svg
 }
 ```
+
+### note
+
+`react-icon` works with `IconWebpackPlugin`
