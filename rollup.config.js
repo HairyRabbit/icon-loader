@@ -6,10 +6,18 @@ import commonjs from 'rollup-plugin-commonjs'
 import pkg from './package.json'
 
 export default [
-  ['packages/icon-loader/src/index.js', 'packages/icon-loader/index.js'],
-  ['packages/react-icon/src/index.js', 'packages/react-icon/index.js'],
-  ['packages/icon-webpack-plugin/src/index.js', 'packages/icon-webpack-plugin/index.js']
-].map(([input, output ]) => ({
+  ['packages/icon-loader/src/index.js', 'packages/icon-loader/index.js', {}],
+  ['packages/react-icon/src/index.js', 'packages/react-icon/index.js', {
+    presets: [["@babel/preset-env", {
+      "targets": {
+        "bowsers": ["ie 8"]
+      },
+      "modules": false,
+      "loose": true
+    }]]
+  }],
+  ['packages/icon-webpack-plugin/src/index.js', 'packages/icon-webpack-plugin/index.js', {}]
+].map(([input, output, babelOptions ]) => ({
   input: path.resolve(input),
   output: {
     file: path.resolve(output),
@@ -21,7 +29,7 @@ export default [
       preferBuiltins: true
     }),
     json({ exclude: 'node_modules/**' }),
-    babel({ exclude: 'node_modules/**' }),
+    babel(Object.assign({}, { exclude: 'node_modules/**' }, babelOptions)),
     commonjs()
   ),
   external: [].concat(

@@ -53,7 +53,7 @@ function _objectWithoutProperties(source, excluded) {
  *
  * 
  */
-const defaultStyles = {
+var defaultStyles = {
   width: '24px',
   height: '24px',
   fill: '#232323',
@@ -62,21 +62,19 @@ const defaultStyles = {
 function Icon(props) {
   // $FlowFixMe
   if (!ICONFILENAME || !ICONCONTEXT) {
-    throw new Error(`[Icon] Icon need icon-webpack-plugin.`);
+    throw new Error("[Icon] Icon need icon-webpack-plugin.");
   }
 
-  const {
-    name,
-    size,
-    color
-  } = props,
-        rest = _objectWithoutProperties(props, ["name", "size", "color"]);
+  var name = props.name,
+      size = props.size,
+      color = props.color,
+      rest = _objectWithoutProperties(props, ["name", "size", "color"]);
 
   if (!name) {
     throw new Error('[Icon] name was required.');
   }
 
-  const styles = Object.assign({}, defaultStyles, size ? {
+  var styles = Object.assign({}, defaultStyles, size ? {
     width: size,
     height: size
   } : {}, color ? {
@@ -90,11 +88,11 @@ function Icon(props) {
       viewBox: "0 0 1024 1024",
       style: styles
     }, rest), React.createElement("use", {
-      xlinkHref: `/${ICONFILENAME}#${name}`
+      xlinkHref: "/" + ICONFILENAME + "#" + name
     }));
   } else {
     // $FlowFixMe
-    const Component = require(`${ICONCONTEXT}/${name}.svg`).default;
+    var Component = require(ICONCONTEXT + "/" + name + ".svg").default;
 
     return React.createElement(Component, _extends({
       style: styles
